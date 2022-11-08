@@ -149,7 +149,7 @@ body {
     font-size: 35px;
     background: none;
     border: none;
-    color: #28B9B5;
+    color: #d27744;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
@@ -163,7 +163,7 @@ body {
 .agregar_descripcion:focus,
 .agregar_valor:focus {
     outline: none;
-    border: 1px solid #28B9B5;
+    border: 1px solid #d27744;
 }
 
 .agregar_btn:focus { outline: none; }
@@ -191,8 +191,8 @@ h2 {
     margin-bottom: 15px;
 }
 
-.ingreso_titulo { color: #28B9B5; }
-.egreso_titulo { color: #FF5049; }
+.ingreso_titulo { color: #d27744; }
+.egreso_titulo { color: #730797; }
 
 .elemento {
     padding: 13px;
@@ -225,13 +225,13 @@ h2 {
 
 .ingreso .elemento_valor,
 .ingreso .elemento_eliminar--btn {
-    color: #28B9B5;
+    color: #d27744;
 }
 
 .egreso .elemento_valor,
 .egreso .elemento_porcentaje,
 .egreso .elemento_eliminar--btn {
-    color: #FF5049;
+    color: #730797;
 }
 
 
