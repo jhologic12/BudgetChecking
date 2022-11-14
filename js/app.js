@@ -1,13 +1,17 @@
 
 const ingresos = [
  new Ingreso ('Salario',3000.00),
- new Ingreso ('Venta Software',1200)
+ new Ingreso ('Venta Software',1200),
+ new Ingreso ('Venta Software',1000),
+ new Ingreso ('Venta Software',5000)
  
 ];
 
 
 const egresos = [
     new Egreso ('Renta Departamento', 900),
+    new Egreso ('Viajes',1000),
+    new Egreso ('Repuestos Vehiculo',2000),
     new Egreso ('Viajes',1000)
 ]
 
@@ -15,7 +19,7 @@ let LoadAPP =()=>{
     console.log("cargando app");
     cargarCabecero();
     cargarIngresos();
-    crearEgresos();
+    cargarEgresos();
 }
 
 let totalIngresos = () =>{
@@ -90,10 +94,11 @@ const crearIngresoHTML = (ingreso)=>{
     <div class="elemento_descripcion">${ingreso.descripcion}</div>
     <div class="derecha limpiarEstilos"> 
         <div class="elemento_valor"> + ${formatoMoneda(ingreso.valor)}</div>
+        <div class="elemento_porcentaje"> ${formatoPorcentaje(ingreso.valor/totalIngresos())}</div>
         <div class="elemento_eliminar">
 
             <button class="elemento_eliminar--btn">
-                <ion-icon name="trash-outline"></ion-icon>
+                <ion-icon name="trash-outline" onclick='eliminarIngreso(${ingreso.id})'></ion-icon>
             </button>
         </div>
     </div>
@@ -107,6 +112,14 @@ const crearIngresoHTML = (ingreso)=>{
     return ingresoHTML;
 }
 
+
+const eliminarIngreso= (id)=>{
+
+  let indiceEliminar =  ingresos.findIndex(ingreso=> ingreso.id ===id);
+  ingresos.splice(indiceEliminar,1); // elimina un elemento dentro del arreglo que ocupe el indice enviado como parametro.
+  cargarCabecero();
+  cargarIngresos();
+}
 
 const cargarEgresos = ()=>{
 
@@ -134,12 +147,23 @@ const crearEgresoHTML = (egreso)=>{
             <div class="elemento_eliminar">
 
                 <button class="elemento_eliminar--btn">
-                    <ion-icon name="trash-outline"></ion-icon>
+                    <ion-icon name="trash-outline" onclick= eliminarEgreso(${egreso.id})></ion-icon>
                 </button>
             </div>
     </div>
-    
+    </div>
     `;
 
     return egresosHTML;
+}
+
+const eliminarEgreso = (id) => {
+ 
+    let indiceEliminar = egresos.findIndex (egreso=>egreso.id === id);
+
+    egresos.splice(indiceEliminar,1);
+    cargarCabecero();
+    cargarEgresos();
+
+
 }
