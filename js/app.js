@@ -1,19 +1,6 @@
 
-const ingresos = [
- new Ingreso ('Salario',3000.00),
- new Ingreso ('Venta Software',1200),
- new Ingreso ('Venta Software',1000),
- new Ingreso ('Venta Software',5000)
- 
-];
-
-
-const egresos = [
-    new Egreso ('Renta Departamento', 900),
-    new Egreso ('Viajes',1000),
-    new Egreso ('Repuestos Vehiculo',2000),
-    new Egreso ('Viajes',1000)
-]
+const ingresos = [];
+const egresos = []
 
 let LoadAPP =()=>{
     console.log("cargando app");
