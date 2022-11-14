@@ -15,6 +15,7 @@ let LoadAPP =()=>{
     console.log("cargando app");
     cargarCabecero();
     cargarIngresos();
+    crearEgresos();
 }
 
 let totalIngresos = () =>{
@@ -104,4 +105,41 @@ const crearIngresoHTML = (ingreso)=>{
     `
 
     return ingresoHTML;
+}
+
+
+const cargarEgresos = ()=>{
+
+    let egresosHTML = '';
+
+    for (egreso of egresos){
+        egresosHTML+= crearEgresoHTML(egreso);
+    }
+
+    document.getElementById('lista-egresos').innerHTML = egresosHTML;
+
+}
+
+
+const crearEgresoHTML = (egreso)=>{
+    let egresosHTML = `
+
+    <div class="elemento limpiarEstilos">
+
+    <div class="elemento_descripcion">${egreso.descripcion}</div>
+
+    <div class="derecha limpiarEstilos">
+            <div class="elemento_valor"> ${formatoMoneda(egreso.valor)} </div>
+            <div class="elemento_porcentaje"> ${formatoPorcentaje(egreso.valor/totalEgresos())}</div>
+            <div class="elemento_eliminar">
+
+                <button class="elemento_eliminar--btn">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </button>
+            </div>
+    </div>
+    
+    `;
+
+    return egresosHTML;
 }
