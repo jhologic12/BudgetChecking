@@ -55,6 +55,7 @@ let cargarCabecero = ()=>{
 
     document.getElementById('presupuesto').innerHTML = formatoMoneda(presupuesto);
     document.getElementById('porcentaje').innerHTML = formatoPorcentaje(porcentajeEgresos);
+    
     document.getElementById('ingresos').innerHTML = formatoMoneda(totalIngresos());
     document.getElementById('egresos').innerHTML = formatoMoneda(totalEgresos()) ;
 
@@ -164,6 +165,37 @@ const eliminarEgreso = (id) => {
     egresos.splice(indiceEliminar,1);
     cargarCabecero();
     cargarEgresos();
+
+
+}
+
+
+
+const agregarDato = () => {
+
+    let formulario = document.forms['formulario'];
+
+    let tipo = formulario['tipo'];
+    let descripcion = formulario['descripcion'];
+    let valor = formulario['valor'];
+
+    if(descripcion.value !=='' && valor.value !==''){
+
+        if (tipo.value ==='ingreso'){
+
+            ingresos.push(new Ingreso(descripcion.value, +valor.value));
+            cargarCabecero();
+            cargarIngresos();
+
+        }
+        else if (tipo.value==='egreso'){
+
+            egresos.push(new Egreso(descripcion.value, +valor.value));
+            cargarCabecero();
+            cargarEgresos();
+
+        }
+    }
 
 
 }
